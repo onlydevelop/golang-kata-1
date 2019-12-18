@@ -14,7 +14,12 @@ type author struct {
 type authors []author
 
 func newAuthor(line string) author {
-	return author{}
+	v := strings.Split(line, ";")
+	return author{
+		email:     strings.TrimSpace(v[0]),
+		firstname: strings.TrimSpace(v[1]),
+		lastname:  strings.TrimSpace(v[2]),
+	}
 }
 
 func load(filename string) authors {

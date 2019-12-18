@@ -33,3 +33,10 @@ func TestAuthorsToString(t *testing.T) {
 	actual := testAuthor.toString()
 	assert(t, expected, actual)
 }
+
+func TestNewAuthor(t *testing.T) {
+	line := "null-mueller@echocat.org;Max;Müller"
+	expected := getTestAuthors()[1]
+	actual := newAuthor(line)
+	assert(t, expected.toString(), actual.toString())
+}
