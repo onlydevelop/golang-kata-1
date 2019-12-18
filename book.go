@@ -45,6 +45,15 @@ func loadBooks(filename string) books {
 	return a
 }
 
+func (b books) findByISBN(isbn string) book {
+	for _, eachBook := range b {
+		if eachBook.isbn == isbn {
+			return eachBook
+		}
+	}
+	return book{}
+}
+
 func (b book) toString() string {
 	if b.title == "" && b.isbn == "" && b.authors == "" && b.description == "" {
 		return ""

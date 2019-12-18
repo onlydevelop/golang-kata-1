@@ -61,3 +61,13 @@ func TestPrintBooks(t *testing.T) {
 	assertTrue(t, strings.Contains(res, "Ich helfe dir kochen"))
 	assertTrue(t, strings.Contains(res, "Starkoch Jamie Oliver"))
 }
+
+func TestFindByISBN(t *testing.T) {
+	books := getTestbooks()
+	found := books.findByISBN("5554-5545-4518")
+	expected := "Ich helfe dir kochen. Das erfolgreiche Universalkochbuch mit großem Backteil[5554-5545-4518]\nnull-walter@echocat.org\nAuf der Suche nach einem Basiskochbuch steht man heutzutage vor einer Fülle von Alternativen. Es fällt schwer, daraus die für sich passende Mixtur aus Grundlagenwerk und Rezeptesammlung zu finden. Man sollte sich darüber im Klaren sein, welchen Schwerpunkt man setzen möchte oder von welchen Koch- und Backkenntnissen man bereits ausgehen kann."
+	assert(t, expected, found.toString())
+	found = books.findByISBN("0000-0000-0000")
+	expected = ""
+	assert(t, expected, found.toString())
+}
