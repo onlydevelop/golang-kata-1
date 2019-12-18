@@ -15,6 +15,12 @@ func assert(t *testing.T, expected string, actual string) {
 	}
 }
 
+func assertTrue(t *testing.T, expected bool) {
+	if !expected {
+		t.Errorf("Expected true but returned false")
+	}
+}
+
 // https://medium.com/@hau12a1/golang-capturing-log-println-and-fmt-println-output-770209c791b4
 func captureOutput(f func()) string {
 	reader, writer, err := os.Pipe()
