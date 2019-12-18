@@ -47,3 +47,11 @@ func TestLoadAuthors(t *testing.T) {
 	assert(t, "Paul Walter <null-walter@echocat.org>", actual[0].toString())
 	assert(t, "Harald Rabe <null-rabe@echocat.org>", actual[len(actual)-1].toString())
 }
+
+func TestPrint(t *testing.T) {
+	res := captureOutput(func() {
+		getTestAuthors().print()
+	})
+
+	assert(t, "Paul Walter <null-walter@echocat.org>\nMax Müller <null-mueller@echocat.org>\n", res)
+}

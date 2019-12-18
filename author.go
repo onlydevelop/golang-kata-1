@@ -55,5 +55,7 @@ func (a authors) toString() string {
 }
 
 func (a authors) print() {
-
+	for _, author := range a {
+		fmt.Println(author.toString())
+	}
 }
