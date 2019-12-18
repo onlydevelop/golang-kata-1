@@ -10,13 +10,13 @@ func getTestbooks() books {
 		book{
 			title:       "Ich helfe dir kochen. Das erfolgreiche Universalkochbuch mit großem Backteil",
 			isbn:        "5554-5545-4518",
-			authors:     "null-walter@echocat.org",
+			authors:     []string{"null-walter@echocat.org"},
 			description: "Auf der Suche nach einem Basiskochbuch steht man heutzutage vor einer Fülle von Alternativen. Es fällt schwer, daraus die für sich passende Mixtur aus Grundlagenwerk und Rezeptesammlung zu finden. Man sollte sich darüber im Klaren sein, welchen Schwerpunkt man setzen möchte oder von welchen Koch- und Backkenntnissen man bereits ausgehen kann.",
 		},
 		book{
 			title:       "Genial italienisch",
 			isbn:        "1024-5245-8584",
-			authors:     "null-lieblich@echocat.org,null-walter@echocat.org,null-rabe@echocat.org",
+			authors:     []string{"null-lieblich@echocat.org", "null-walter@echocat.org", "null-rabe@echocat.org"},
 			description: "Starkoch Jamie Oliver war mit seinem VW-Bus in Italien unterwegs -- und hat allerlei kulinarische Souvenirs mitgebracht. Es lohnt sich, einen Blick in sein Gepäck zu werfen...",
 		},
 	}

@@ -10,7 +10,7 @@ import (
 type book struct {
 	title       string
 	isbn        string
-	authors     string
+	authors     []string
 	description string
 }
 
@@ -22,10 +22,12 @@ func newbook(line string) book {
 		return book{}
 	}
 
+	authorList := strings.Split(strings.TrimSpace(v[2]), ",")
+
 	return book{
 		title:       strings.TrimSpace(v[0]),
 		isbn:        strings.TrimSpace(v[1]),
-		authors:     strings.TrimSpace(v[2]),
+		authors:     authorList,
 		description: strings.TrimSpace(v[3]),
 	}
 }
@@ -56,8 +58,7 @@ func (b books) findByISBN(isbn string) book {
 
 func (b books) findByEmail(email string) book {
 	for _, eachBook := range b {
-		emails := strings.Split(eachBook.authors, ",")
-		for _, eachEmail := range emails {
+		for _, eachEmail := range eachBook.authors {
 			if eachEmail == email {
 				return eachBook
 			}
@@ -67,10 +68,11 @@ func (b books) findByEmail(email string) book {
 }
 
 func (b book) toString() string {
-	if b.title == "" && b.isbn == "" && b.authors == "" && b.description == "" {
+	if b.title == "" && b.isbn == "" && len(b.authors) == 0 && b.description == "" {
 		return ""
 	}
-	return fmt.Sprintf("%s[%s]\n%s\n%s", b.title, b.isbn, b.authors, b.description)
+	authors := strings.Join(b.authors, ",")
+	return fmt.Sprintf("%s[%s]\n%s\n%s", b.title, b.isbn, authors, b.description)
 }
 
 func (b books) toString() string {
