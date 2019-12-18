@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 type author struct {
@@ -25,7 +26,11 @@ func (a author) toString() string {
 }
 
 func (a authors) toString() string {
-	return ""
+	var authorEmails []string
+	for _, author := range a {
+		authorEmails = append(authorEmails, author.email)
+	}
+	return strings.Join(authorEmails, ",")
 }
 
 func (a authors) print() {
