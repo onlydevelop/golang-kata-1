@@ -71,3 +71,13 @@ func TestFindByISBN(t *testing.T) {
 	expected = ""
 	assert(t, expected, found.toString())
 }
+
+func TestFindByEmail(t *testing.T) {
+	books := getTestbooks()
+	found := books.findByEmail("null-walter@echocat.org")
+	expected := "Ich helfe dir kochen. Das erfolgreiche Universalkochbuch mit großem Backteil[5554-5545-4518]\nnull-walter@echocat.org\nAuf der Suche nach einem Basiskochbuch steht man heutzutage vor einer Fülle von Alternativen. Es fällt schwer, daraus die für sich passende Mixtur aus Grundlagenwerk und Rezeptesammlung zu finden. Man sollte sich darüber im Klaren sein, welchen Schwerpunkt man setzen möchte oder von welchen Koch- und Backkenntnissen man bereits ausgehen kann."
+	assert(t, expected, found.toString())
+	found = books.findByEmail("invalid@echocat.org")
+	expected = ""
+	assert(t, expected, found.toString())
+}

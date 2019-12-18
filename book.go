@@ -54,6 +54,18 @@ func (b books) findByISBN(isbn string) book {
 	return book{}
 }
 
+func (b books) findByEmail(email string) book {
+	for _, eachBook := range b {
+		emails := strings.Split(eachBook.authors, ",")
+		for _, eachEmail := range emails {
+			if eachEmail == email {
+				return eachBook
+			}
+		}
+	}
+	return book{}
+}
+
 func (b book) toString() string {
 	if b.title == "" && b.isbn == "" && b.authors == "" && b.description == "" {
 		return ""
