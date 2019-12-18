@@ -1,19 +1,17 @@
 package main
 
 import (
-	. "github.com/onsi/gomega"
 	"testing"
 )
 
 func TestWelcomeMessage(t *testing.T) {
-	g := NewGomegaWithT(t)
-
-	// given
-	expected := "Hello world!"
-
-	// than
+	expected := "Hello world1!"
 	actual := welcomeMessage()
+	assert(t, expected, actual)
+}
 
-	// that
-	g.Expect(actual).To(Equal(expected))
+func assert(t *testing.T, expected string, actual string) {
+	if expected != actual {
+		t.Errorf("Expected %v, but got %v", expected, actual)
+	}
 }
