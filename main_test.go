@@ -5,13 +5,7 @@ import (
 )
 
 func TestWelcomeMessage(t *testing.T) {
-	expected := "Hello world1!"
+	expected := "Hello world!"
 	actual := welcomeMessage()
 	assert(t, expected, actual)
-}
-
-func assert(t *testing.T, expected string, actual string) {
-	if expected != actual {
-		t.Errorf("Expected %v, but got %v", expected, actual)
-	}
 }

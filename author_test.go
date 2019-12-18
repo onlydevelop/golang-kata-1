@@ -26,9 +26,3 @@ func TestAuthorToString(t *testing.T) {
 	actual := testAuthor.toString()
 	assert(t, expected, actual)
 }
-
-func assert(t *testing.T, expected string, actual string) {
-	if expected != actual {
-		t.Errorf("Expected %v, but got %v", expected, actual)
-	}
-}
