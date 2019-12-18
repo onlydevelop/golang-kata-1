@@ -39,6 +39,8 @@ func TestNewAuthor(t *testing.T) {
 	expected := getTestAuthors()[1]
 	actual := newAuthor(line)
 	assert(t, expected.toString(), actual.toString())
+	actual = newAuthor("null-mueller@echocat.org;Max")
+	assert(t, "", actual.toString())
 }
 
 func TestLoadAuthors(t *testing.T) {
@@ -52,6 +54,5 @@ func TestPrint(t *testing.T) {
 	res := captureOutput(func() {
 		getTestAuthors().print()
 	})
-
 	assert(t, "Paul Walter <null-walter@echocat.org>\nMax Müller <null-mueller@echocat.org>\n", res)
 }

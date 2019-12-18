@@ -43,6 +43,9 @@ func loadAuthors(filename string) authors {
 }
 
 func (a author) toString() string {
+	if a.firstname == "" && a.lastname == "" && a.email == "" {
+		return ""
+	}
 	return fmt.Sprintf("%s %s <%s>", a.firstname, a.lastname, a.email)
 }
 
