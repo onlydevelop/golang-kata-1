@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 type author struct {
 	email     string
 	firstname string
@@ -17,7 +21,7 @@ func load(filename string) authors {
 }
 
 func (a author) toString() string {
-	return ""
+	return fmt.Sprintf("%s %s <%s>", a.firstname, a.lastname, a.email)
 }
 
 func (a authors) toString() string {
