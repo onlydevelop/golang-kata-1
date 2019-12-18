@@ -40,3 +40,10 @@ func TestNewAuthor(t *testing.T) {
 	actual := newAuthor(line)
 	assert(t, expected.toString(), actual.toString())
 }
+
+func TestLoadAuthors(t *testing.T) {
+	file := "resources/authors.csv"
+	actual := loadAuthors(file)
+	assert(t, "Paul Walter <null-walter@echocat.org>", actual[0].toString())
+	assert(t, "Harald Rabe <null-rabe@echocat.org>", actual[len(actual)-1].toString())
+}

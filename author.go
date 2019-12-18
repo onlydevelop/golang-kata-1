@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
+	"log"
 	"strings"
 )
 
@@ -15,6 +17,9 @@ type authors []author
 
 func newAuthor(line string) author {
 	v := strings.Split(line, ";")
+	if len(v) != 3 {
+		return author{}
+	}
 	return author{
 		email:     strings.TrimSpace(v[0]),
 		firstname: strings.TrimSpace(v[1]),
@@ -22,8 +27,19 @@ func newAuthor(line string) author {
 	}
 }
 
-func load(filename string) authors {
-	return nil
+func loadAuthors(filename string) authors {
+	bs, err := ioutil.ReadFile(filename)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var a authors
+	for _, line := range (strings.Split(string(bs), "\n"))[1:] {
+		if strings.Contains(line, ";") {
+			a = append(a, newAuthor(line))
+		}
+	}
+	return a
 }
 
 func (a author) toString() string {
